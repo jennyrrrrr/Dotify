@@ -6,7 +6,7 @@ This is a music app for people to listen to music. It's the first proof of conce
 I have completed extra credit #1, #2, #3, #4, #5 
 
 ## Screenshots
-<img src="./img/Screenshot_1586474457.png" alt="Screenshot of the app" height="500" />
+<img src="./screenshot1.png" alt="Screenshot of the app" height="500" />
 
 
 ## Installation & Usage
