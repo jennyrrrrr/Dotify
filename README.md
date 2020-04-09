@@ -1,11 +1,9 @@
-# Dotify
-..
 # Dotify App by Jenny Rong
 
-This is a social media app that can upload images.
+This is a music app for people to listen to music.
 
 ## Extra credit
-I have completed extra credit #1, #4, and #6
+I have completed extra credit #1, 
 
 ## Screenshots
 <img src="./screenshot1.jpg" alt="Screenshot of the app" height="500" />
