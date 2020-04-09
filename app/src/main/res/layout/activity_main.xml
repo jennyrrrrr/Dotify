@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:padding="16dp">
+    android:padding="@dimen/mediumPadding">
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="userName,etNameInput,btnApplyUser,btnChangeUser"/>
+        app:constraint_referenced_ids="userName,etNameInput,btnApplyUser,btnChangeUser"
+        />
 
     <TextView
         android:id="@+id/userName"
@@ -31,6 +32,7 @@
         android:autofillHints="@string/et_user_name_hint"
         android:hint="@string/et_user_name_hint"
         android:visibility="invisible"
+        android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bar"
@@ -61,23 +63,21 @@
 
     <ImageView
         android:id="@+id/coverImage"
-        android:contentDescription="@string/img_description"
         android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:scaleType="fitCenter"
+        android:layout_height="0dp"
+        android:contentDescription="@string/img_description"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/bar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/album_cover"
-        />
+        app:layout_constraintTop_toBottomOf="@id/bar"
+        app:srcCompat="@drawable/album_cover" />
 
     <TextView
         android:id="@+id/songName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/song_name"
-        android:textSize="35sp"
+        android:textSize="@dimen/largeFont"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/coverImage"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@id/artistName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:paddingTop="16dp"
+        android:paddingTop="@dimen/mediumPadding"
         />
 
     <TextView
@@ -109,7 +109,7 @@
     <ImageView
         android:id="@+id/previousBtn"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/smallButtonSize"
         android:contentDescription="@string/previous_btn"
         android:onClick="previousClicked"
         android:tint="@color/grey"
@@ -124,7 +124,7 @@
     <ImageView
         android:id="@+id/playBtn"
         android:layout_width="0dp"
-        android:layout_height="90dp"
+        android:layout_height="@dimen/mediumButtonSize"
         android:contentDescription="@string/play_btn"
         android:onClick="playClicked"
         android:tint="@color/grey"
@@ -140,7 +140,7 @@
         android:id="@+id/nextBtn"
         android:onClick="nextClicked"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/smallButtonSize"
         android:contentDescription="@string/next_btn"
         android:tint="@color/grey"
         app:layout_constraintDimensionRatio="1:1"

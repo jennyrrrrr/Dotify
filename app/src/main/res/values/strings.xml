@@ -3,13 +3,13 @@
     <string name="default_user_name">User1</string>
     <string name="et_user_name_hint">Enter User Name</string>
     <string name="change_btn">Change User</string>
-    <string name="apply_btn">APPLY</string>
+    <string name="apply_btn">Apply</string>
     <string name="img_description">a picture of the album cover for GIANTS</string>
     <string name="song_name">GIANTS</string>
-    <string name="default_plays"># Plays</string>
+    <string name="default_plays"># plays</string>
     <string name="artist_names">True Damage, Becky G, Keke Palmer, SOYEON of (G)I-DLE, DUCKWRTH,
         Thutmose</string>
     <string name="play_btn">a picture of play button</string>
-    <string name="previous_btn">a picture of previous button</string>
-    <string name="next_btn">a picture of next button</string>
+    <string name="previous_btn">a picture of skip previous button</string>
+    <string name="next_btn">a picture of skip next button</string>
 </resources>

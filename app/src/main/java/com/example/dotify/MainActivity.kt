@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-
     private val randomNumber = Random.nextInt(1000000, 10000000)
     private var num = randomNumber
 
@@ -22,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val playCounts = findViewById<TextView>(R.id.playCounts)
-        val counts = randomNumber.toString()
-        val countsText = "$counts plays"
+        val countsText = "${randomNumber.toString()} plays"
         playCounts.text = countsText
     }
 
@@ -32,32 +30,27 @@ class MainActivity : AppCompatActivity() {
         val userName = findViewById<TextView>(R.id.userName)
         val btnApplyUser = findViewById<Button>(R.id.btnApplyUser)
         val btnChangeUser = findViewById<Button>(R.id.btnChangeUser)
-
-        btnChangeUser.setVisibility(View.GONE)
-        userName.setVisibility(View.GONE)
-        etNameInput.setVisibility(View.VISIBLE)
-        btnApplyUser.setVisibility(View.VISIBLE)
+        btnChangeUser.visibility = View.GONE
+        userName.visibility = View.GONE
+        etNameInput.visibility = View.VISIBLE
+        btnApplyUser.visibility = View.VISIBLE
     }
 
     fun applyClicked(view: View) {
-        val userInputtedName = etNameInput.text
-        userName.setText(userInputtedName)
-
-        if (TextUtils.isEmpty(userInputtedName)) {
+        if (TextUtils.isEmpty(etNameInput.text)) {
             Toast.makeText(this, "You did not enter a username!", Toast.LENGTH_SHORT).show()
-            Log.i("aa", "clicked")
         } else {
-            btnChangeUser.setVisibility(View.VISIBLE)
-            userName.setVisibility(View.VISIBLE)
-            etNameInput.setVisibility(View.GONE)
-            btnApplyUser.setVisibility(View.GONE)
+            userName.text = etNameInput.text
+            btnChangeUser.visibility = View.VISIBLE
+            userName.visibility = View.VISIBLE
+            etNameInput.visibility = View.GONE
+            btnApplyUser.visibility = View.GONE
         }
     }
 
     fun playClicked(view: View) {
-        num ++;
-        val countsText = "$num plays"
-        playCounts.text = countsText
+        val newCounts = "${num++} plays"
+        playCounts.text = newCounts
     }
 
     fun previousClicked(view: View) {
