@@ -3,12 +3,9 @@ package com.example.dotify
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -20,16 +17,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val playCounts = findViewById<TextView>(R.id.playCounts)
-        val countsText = "${randomNumber.toString()} plays"
-        playCounts.text = countsText
+        val counts = "$randomNumber plays"
+        playCounts.text = counts
+        coverImage.setOnLongClickListener{
+            userName.apply {
+                setTextColor(getColor(R.color.purple))
+            }
+            songName.apply {
+                setTextColor(getColor(R.color.purple))
+            }
+            artistName.apply {
+                setTextColor(getColor(R.color.purple))
+            }
+            playCounts.apply {
+                setTextColor(getColor(R.color.purple))
+            }
+            true
+        }
     }
 
     fun changeClicked(view: View) {
-        val etNameInput = findViewById<EditText>(R.id.etNameInput)
-        val userName = findViewById<TextView>(R.id.userName)
-        val btnApplyUser = findViewById<Button>(R.id.btnApplyUser)
-        val btnChangeUser = findViewById<Button>(R.id.btnChangeUser)
         btnChangeUser.visibility = View.GONE
         userName.visibility = View.GONE
         etNameInput.visibility = View.VISIBLE
@@ -38,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     fun applyClicked(view: View) {
         if (TextUtils.isEmpty(etNameInput.text)) {
-            Toast.makeText(this, "You did not enter a username!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Username can not be empty!", Toast.LENGTH_SHORT).show()
         } else {
             userName.text = etNameInput.text
             btnChangeUser.visibility = View.VISIBLE
