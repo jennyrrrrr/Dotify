@@ -10,11 +10,13 @@ I have completed extra credit #1, #2, #3
 <img src="./screenshot3.png" alt="Screenshot of the app" height="500" />
 
 ## Installation & Usage
-click on shuffle to shuffle the songs.
+click on shuffle button to shuffle the songs.
 
 click on the song in the list, the song will show on the miniplayer.
 
-click on the miniplayer to see the music player screen.
+click on the miniplayer to switch to the music player screen.
+
+click on the back button to go back to the main screen. 
 
 Long clicking on the song to remove the song from the list.
 
