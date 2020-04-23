@@ -1,5 +1,7 @@
 package com.example.dotify
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -20,6 +22,7 @@ class ActivityB : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         init()
         btnPlay.setOnClickListener {playSong()}
@@ -76,4 +79,10 @@ class ActivityB : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this, SongListActivity::class.java)
+        startActivity(intent)
+        finish()
+        return true
+    }
 }
