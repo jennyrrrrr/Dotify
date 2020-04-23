@@ -3,7 +3,7 @@
 This is the second version for a music app Dotify. The app is for people to listen to music. The first screen will show a list of songs, and by clicking on the song names, it will also show on the mini player. By clicking on the miniplayer, the user will be able to be redirected to the music player screen.
 
 ## Extra credit
-I have completed extra credit #2, #3
+I have completed extra credit #1, #2, #3
 
 ## Screenshots
 <img src="./screenshot2.png" alt="Screenshot of the app" height="500" />
