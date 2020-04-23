@@ -7,8 +7,18 @@
     <string name="img_description">a picture of the album cover for GIANTS</string>
     <string name="song_name">GIANTS</string>
     <string name="default_plays"># plays</string>
+    <string name="plays_count_format">%d plays</string>
     <string name="artist_names">True Damage, Becky G, Keke Palmer, SOYEON of (G)I-DLE, DUCKWRTH, Thutmose</string>
     <string name="play_btn">a picture of play button</string>
     <string name="previous_btn">a picture of skip previous button</string>
     <string name="next_btn">a picture of skip next button</string>
+    <string name="username_alert">Username can not be empty!</string>
+    <string name="skip_previous">Skipping to previous track</string>
+    <string name="skip_next">Skipping to next track</string>
+    <string name="sm_image_description">mini image of song album</string>
+    <string name="shuffle_btn">SHUFFLE</string>
+    <string name="song_info">%s - %s</string>
+    <string name="back_button">back button</string>
+    <string name="delete_song">%s is successfully deleted!</string>
+    <string name="all_songs_title">All Songs</string>
 </resources>
