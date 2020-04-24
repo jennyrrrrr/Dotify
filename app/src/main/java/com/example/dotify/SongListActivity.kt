@@ -18,7 +18,7 @@ class SongListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_song_list)
 
         songAdapter.onSongClickListener = { song: Song -> setMiniPlayer(song) }
-        songAdapter.onSongLongClickListener = { song: Song , position: Int -> removeSong(song, position) }
+        songAdapter.onSongLongClickListener = { song: Song -> removeSong(song) }
         btnShuffle.setOnClickListener { shuffleSongs() }
         rvSongs.adapter = songAdapter
     }
@@ -33,14 +33,14 @@ class SongListActivity : AppCompatActivity() {
         }
     }
 
-    private fun removeSong(song: Song, position: Int) {
-        val newSongs = allSongs.toMutableList().apply{ removeAt(position) }
-        songAdapter.remove(newSongs)
+    private fun removeSong(song: Song) {
+        val newSongs = allSongs.toMutableList().apply{ allSongs.remove(song) }
+        songAdapter.change(newSongs)
         Toast.makeText(this, getString(R.string.delete_song).format(song.title), Toast.LENGTH_SHORT).show()
     }
 
     private fun shuffleSongs() {
         val newSongs = allSongs.toMutableList().apply{shuffle()}
-        songAdapter.shuffle(newSongs)
+        songAdapter.change(newSongs)
     }
 }

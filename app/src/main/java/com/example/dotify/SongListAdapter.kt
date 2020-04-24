@@ -14,7 +14,7 @@ class SongListAdapter(allSongs: List<Song>): RecyclerView.Adapter<SongListAdapte
     private var allSongs: List<Song> = allSongs.toList()
 
     var onSongClickListener: ((song: Song) -> Unit)? = null
-    var onSongLongClickListener: ((song: Song, position: Int) -> Unit)? = null
+    var onSongLongClickListener: ((song: Song) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false)
@@ -29,17 +29,12 @@ class SongListAdapter(allSongs: List<Song>): RecyclerView.Adapter<SongListAdapte
         holder.bind(song, position)
     }
 
-    fun shuffle (newSongs: List<Song>){
+    fun change (newSongs: List<Song>){
         val callBack = SongDiffCallBack(allSongs, newSongs)
         val diffResult = DiffUtil.calculateDiff(callBack)
         diffResult.dispatchUpdatesTo(this)
 
         allSongs = newSongs
-    }
-
-    fun remove (newSongs: List<Song>) {
-        allSongs = newSongs
-        notifyDataSetChanged()
     }
 
     inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -57,7 +52,7 @@ class SongListAdapter(allSongs: List<Song>): RecyclerView.Adapter<SongListAdapte
             }
 
             itemView.setOnLongClickListener {
-                onSongLongClickListener?.invoke(song, position)
+                onSongLongClickListener?.invoke(song)
                 true
             }
         }
