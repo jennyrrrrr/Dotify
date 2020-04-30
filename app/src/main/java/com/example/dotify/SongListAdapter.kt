@@ -26,7 +26,7 @@ class SongListAdapter(allSongs: List<Song>): RecyclerView.Adapter<SongListAdapte
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val song = allSongs[position]
-        holder.bind(song, position)
+        holder.bind(song)
     }
 
     fun change (newSongs: List<Song>){
@@ -42,7 +42,7 @@ class SongListAdapter(allSongs: List<Song>): RecyclerView.Adapter<SongListAdapte
         private val artistName =  itemView.findViewById<TextView>(R.id.rvArtistName)
         private val smSongImage =  itemView.findViewById<ImageView>(R.id.rvSongImage)
 
-        fun bind(song: Song, position: Int) {
+        fun bind(song: Song) {
             songName.text = song.title
             artistName.text = song.artist
             smSongImage.setImageResource(song.smallImageID)

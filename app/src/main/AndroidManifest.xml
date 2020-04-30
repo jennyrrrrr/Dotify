@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SongListActivity"
-            android:label="@string/all_songs_title">
+        <activity android:name=".UlternateMainActivity">
+
+        </activity>
+        <activity android:name=".SongListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
