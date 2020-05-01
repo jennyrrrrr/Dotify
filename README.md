@@ -1,13 +1,11 @@
 # Dotify App by Jenny Rong
 
-This is the second version for a music app Dotify. The app is for people to listen to music. The first screen will show a list of songs, and by clicking on the song names, it will also show on the mini player. By clicking on the miniplayer, the user will be able to be redirected to the music player screen.
+This is the third version for a music app Dotify. The app is for people to listen to music. The first screen will show a list of songs, and by clicking on the song names, it will also show on the mini player. By clicking on the miniplayer, the user will be able to be redirected to the music player screen. This version has been worked on work code refactoring to support phone rotation, split screen, & utilizing fragments!
 
-## Extra credit
-I have completed extra credit #1, #2, #3
 
 ## Screenshots
-<img src="./screenshot2.png" alt="Screenshot of the app" height="500" />
-<img src="./screenshot3.png" alt="Screenshot of the app" height="500" />
+<img src="./screenshot4.png" alt="Screenshot of the app" height="500" />
+<img src="./screenshot5.png" alt="Screenshot of the app" height="500" />
 
 ## Installation & Usage
 click on shuffle button to shuffle the songs.
