@@ -10,6 +10,7 @@ import com.example.dotify.songdetail.ActivityB
 import com.example.dotify.songdetail.ActivityB.Companion.SONG_KEY
 import com.example.dotify.R
 import kotlinx.android.synthetic.main.activity_song_list.*
+import kotlinx.android.synthetic.main.activity_ultimate_main.*
 
 class SongListActivity : AppCompatActivity() {
     private var allSongs = SongDataProvider.getAllSongs().toMutableList()
