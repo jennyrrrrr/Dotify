@@ -1,16 +1,12 @@
-package com.example.dotify
+package com.example.dotify.songdetail
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.MenuItem
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
+import com.example.dotify.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 

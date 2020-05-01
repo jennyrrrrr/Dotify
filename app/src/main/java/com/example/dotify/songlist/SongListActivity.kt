@@ -1,4 +1,4 @@
-package com.example.dotify
+package com.example.dotify.songlist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
-import com.example.dotify.ActivityB.Companion.SONG_KEY
+import com.example.dotify.songdetail.ActivityB
+import com.example.dotify.songdetail.ActivityB.Companion.SONG_KEY
+import com.example.dotify.R
 import kotlinx.android.synthetic.main.activity_song_list.*
 
 class SongListActivity : AppCompatActivity() {

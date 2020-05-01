@@ -1,4 +1,4 @@
-package com.example.dotify
+package com.example.dotify.songlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
+import com.example.dotify.R
+import com.example.dotify.SongDiffCallBack
 
 class SongListAdapter(allSongs: List<Song>): RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
 
