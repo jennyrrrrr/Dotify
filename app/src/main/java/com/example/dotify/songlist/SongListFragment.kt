@@ -17,10 +17,9 @@ class SongListFragment: Fragment() {
     private lateinit var songs: MutableList<Song>
 
     companion object {
-        // get the previously clicked song
-        const val SHUFFLED_SONG = "shuffled_song"
-        // get the song list
-        const val ARG_SONG = "arg_song"
+        val TAG: String = SongListFragment::class.java.simpleName
+        const val SHUFFLED_SONG = "shuffled_song"  // get the previously clicked song
+        const val ARG_SONG = "arg_song"   // get the song list
     }
 
     override fun onAttach(context: Context) {

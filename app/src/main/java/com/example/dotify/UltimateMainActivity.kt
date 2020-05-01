@@ -6,8 +6,8 @@ import android.view.View
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import com.example.dotify.songdetail.NowPlayingFragment
-import com.example.dotify.songlist.OnSongClickListener
 import com.example.dotify.songlist.SongListFragment
+import com.example.dotify.songlist.OnSongClickListener
 import kotlinx.android.synthetic.main.activity_ultimate_main.*
 
 // class UltimateMainActivity subclass AppCompatActivity implement OnSongClickListener
@@ -23,9 +23,9 @@ class UltimateMainActivity : AppCompatActivity(), OnSongClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ultimate_main)
 
+        title = "All Songs"
         val songListFragment = SongListFragment()
 
-        // reload the clicked song on mini-player
         if (savedInstanceState != null) {
             with(savedInstanceState) {
                 currentSong = getParcelable(CLICKED_SONG)
@@ -38,15 +38,22 @@ class UltimateMainActivity : AppCompatActivity(), OnSongClickListener {
             songListFragment.arguments = songListBundle
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragContainer, songListFragment)
+                .add(R.id.fragContainer, songListFragment, SongListFragment.TAG)
                 .commit()
         }
 
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            miniPlayer.visibility = View.GONE
+        } else {
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            miniPlayer.visibility = View.VISIBLE
+        }
+
         supportFragmentManager.addOnBackStackChangedListener {
-            val hasBackStack = supportFragmentManager.backStackEntryCount > 0
-            if (!hasBackStack) {
-               supportActionBar?.setDisplayHomeAsUpEnabled(true)
-               miniPlayer.visibility = View.GONE
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                miniPlayer.visibility = View.GONE
             } else {
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 miniPlayer.visibility = View.VISIBLE
@@ -72,22 +79,22 @@ class UltimateMainActivity : AppCompatActivity(), OnSongClickListener {
     private fun setMiniPlayer() {
         val song = currentSong
         if (song != null) {
-            val songDetailFragment = NowPlayingFragment()
-            val argumentBundle = Bundle().apply {
-                putParcelable(NowPlayingFragment.SONG_KEY, song)
-            }
-            songDetailFragment.arguments = argumentBundle
-            val nowPlayingFragment = getNowPlayingFragment()
-            if (nowPlayingFragment == null) {
-                supportFragmentManager
-                    .beginTransaction()
-                    .add(R.id.fragContainer, songDetailFragment)
-                    .addToBackStack(NowPlayingFragment.TAG)
-                    .commit()
+            var nowPlayingFragmentRef = getNowPlayingFragment()
+            if (nowPlayingFragmentRef == null) {
+                val nowPlayingFragment = NowPlayingFragment()
+                val argumentBundle = Bundle().apply {
+                    putParcelable(NowPlayingFragment.SONG_KEY, song)
+                }
+                nowPlayingFragment.arguments = argumentBundle
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragContainer, nowPlayingFragment, NowPlayingFragment.TAG)
+                .addToBackStack(NowPlayingFragment.TAG)
+                .commit()
+            miniPlayer.visibility = View.GONE
             } else {
-                nowPlayingFragment.updateSong(song)
+                nowPlayingFragmentRef.updateSong(song)
             }
-
         }
     }
 
@@ -102,4 +109,8 @@ class UltimateMainActivity : AppCompatActivity(), OnSongClickListener {
         return super.onNavigateUp()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(CLICKED_SONG, currentSong)
+    }
 }

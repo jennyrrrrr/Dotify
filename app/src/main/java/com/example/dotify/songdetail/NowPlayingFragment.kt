@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.example.dotify.R
+import kotlinx.android.synthetic.main.activity_ultimate_main.*
 import kotlinx.android.synthetic.main.fragment_now_playing.*
 import kotlin.random.Random
 
@@ -17,7 +18,6 @@ import kotlin.random.Random
 class NowPlayingFragment : Fragment() {
     private var randomNumber = Random.nextInt(1000000, 10000000)
     private var currentCount = randomNumber
-    private var song : Song? = null
 
     companion object {
         val TAG: String = NowPlayingFragment::class.java.simpleName
@@ -73,7 +73,8 @@ class NowPlayingFragment : Fragment() {
     }
 
     private fun playSong() {
-        playCounts.text = getString(R.string.plays_count_format).format(randomNumber++)
+        currentCount++
+        playCounts.text = getString(R.string.plays_count_format).format(currentCount)
     }
 
     // public method takes in a Song object as a param and update the media player views to reflect
