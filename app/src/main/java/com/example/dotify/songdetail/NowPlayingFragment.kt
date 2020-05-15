@@ -1,5 +1,7 @@
 package com.example.dotify.songdetail
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
+import com.example.dotify.HttpApp
+import com.example.dotify.MusicManager
 import com.example.dotify.R
+import com.example.dotify.songdetail.NowPlayingFragment.Companion.OUT_COUNT
 import kotlinx.android.synthetic.main.activity_ultimate_main.*
 import kotlinx.android.synthetic.main.fragment_now_playing.*
 import kotlin.random.Random
@@ -23,6 +28,12 @@ class NowPlayingFragment : Fragment() {
         val TAG: String = NowPlayingFragment::class.java.simpleName
         const val SONG_KEY = "song_key"
         const val OUT_COUNT = "out_count"
+
+        fun getInstance(song: Song): NowPlayingFragment = NowPlayingFragment().apply {
+            arguments = Bundle().apply {
+                putParcelable(SONG_KEY, song)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,9 +74,7 @@ class NowPlayingFragment : Fragment() {
 
         btnNext.setOnClickListener {skipSong(getString(R.string.skip_next))}
         btnPrevious.setOnClickListener {skipSong(getString(R.string.skip_previous))}
-        btnPlay.setOnClickListener {
-            btnPlay.setOnClickListener {playSong()}
-        }
+        btnPlay.setOnClickListener {playSong()}
     }
 
     private fun skipSong(msg: String) {
@@ -75,6 +84,10 @@ class NowPlayingFragment : Fragment() {
     private fun playSong() {
         currentCount++
         playCounts.text = getString(R.string.plays_count_format).format(currentCount)
+
+        (context?.applicationContext as? HttpApp)?.musicManager.let { musicManager ->
+            musicManager?.play()
+        }
     }
 
     // public method takes in a Song object as a param and update the media player views to reflect

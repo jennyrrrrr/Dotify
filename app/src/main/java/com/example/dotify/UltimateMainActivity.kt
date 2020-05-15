@@ -1,5 +1,6 @@
 package com.example.dotify
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -67,31 +68,33 @@ class UltimateMainActivity : AppCompatActivity(), OnSongClickListener {
         songInfo.setOnClickListener {
             setMiniPlayer()
         }
+
+        btnProfile.setOnClickListener {
+            val intent = Intent(this, UserInfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     // set the text on the mini-player when a song has being clicked
-    override fun onSongClicked (song: Song?) {
+    override fun onSongClicked(song: Song?) {
         songInfo.text = getString(R.string.song_info).format(song?.title, song?.artist)
         currentSong = song
     }
 
-    //     set the on click listener on the mini player
+    // set the on click listener on the mini player
     private fun setMiniPlayer() {
         val song = currentSong
         if (song != null) {
-            var nowPlayingFragmentRef = getNowPlayingFragment()
+            val nowPlayingFragmentRef = getNowPlayingFragment()
             if (nowPlayingFragmentRef == null) {
-                val nowPlayingFragment = NowPlayingFragment()
-                val argumentBundle = Bundle().apply {
-                    putParcelable(NowPlayingFragment.SONG_KEY, song)
-                }
-                nowPlayingFragment.arguments = argumentBundle
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragContainer, nowPlayingFragment, NowPlayingFragment.TAG)
-                .addToBackStack(NowPlayingFragment.TAG)
-                .commit()
-            miniPlayer.visibility = View.GONE
+                val nowPlayingFragment = NowPlayingFragment.getInstance(song)
+
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.fragContainer, nowPlayingFragment, NowPlayingFragment.TAG)
+                    .addToBackStack(NowPlayingFragment.TAG)
+                    .commit()
+                miniPlayer.visibility = View.GONE
             } else {
                 nowPlayingFragmentRef.updateSong(song)
             }
