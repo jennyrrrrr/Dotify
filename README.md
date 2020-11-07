@@ -4,8 +4,10 @@ This is the fourth version for a music app Dotify. The app is for people to list
 
 
 ## Screenshots
-<img src="./screenshot8.png" alt="Screenshot of the app" height="500" />
-<img src="./screenshot7.png" alt="Screenshot of the app" height="500" />
+<p align="middle">
+<img src="./screenshot8.png" alt="Screenshot of the app" height="300" />
+<img src="./screenshot7.png" alt="Screenshot of the app" height="300" />
+</p>
 <img src="./screenshot6.png" alt="Screenshot of the app" height="500" />
 <img src="./screenshot4.png" alt="Screenshot of the app" height="500" />
 <img src="./screenshot5.png" alt="Screenshot of the app" height="500" />
